@@ -1,0 +1,39 @@
+{% extends 'master.html' %}
+{% block content %}
+
+<div class="login">
+
+<h2>Login</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+</form>
+
+</div>
+
+
+{% comment %} <h2>Login</h2>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.level_tag }}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+<br />
+<form action="" method="POST">
+     {% csrf_token %} 
+
+     <div class="mb-3">
+        <label for="exampleUsername" class="form-label">Username</label>
+        <input type="text" class="form-control" id="exampleUsername" name="username" required>
+     </div>
+     <div class="mb-3">
+        <label for="examplePassword" class="form-label">Password</label>
+        <input type="password" class="form-control" id="examplePassword" name="password" required>
+     </div>
+
+     <input type="submit" value="Login" class="btn btn-secondary"/>
+</form>
+<br /><br /> {% endcomment %}
+{% endblock %}

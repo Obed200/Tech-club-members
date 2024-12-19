@@ -1,0 +1,31 @@
+{% extends "master.html" %}
+
+
+{% block title %}
+  Details about {{ mymember.firstname }} {{ mymember.lastname }}
+{% endblock %}
+
+{% block content %}
+{% comment %}
+start of gpt suggestions
+{% endcomment %}
+<div style="text-align: center;">
+  {% if mymember.profile_image %}
+    <img src="{{ mymember.profile_image.url }}" alt="Profile Image" style="width:150px; height:150px; border-radius: 50%; object-fit: cover;">
+{% else %}
+    <p>No image available</p>
+{% endif %}
+
+</div>
+
+{% comment %}
+start of gpt suggestions
+{% endcomment %}
+
+
+  <div class="mycard">
+    <h1>{{ mymember.firstname }} {{ mymember.lastname }}</h1>
+    <p>Phone {{ mymember.phone }}</p>
+    <p>Member since: {{ mymember.joined_date }}</p>
+  </div>
+{% endblock %}  

@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="{% static 'myfirst.css' %}">
+  <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+{% comment %} <div class="topnav">
+  <a href="/">HOME</a> |
+  <a href="/members">MEMBERS</a>
+  {% comment %} <a class="nav-link" href="{% url 'login' %}">Login</a> {% endcomment %}
+{% comment %} </div> {% endcomment %}
+
+{% comment %} <div class="toprightnav">
+  <a class="nav-link" href="{% url 'login' %}">Login</a>
+</div> {% endcomment %}
+
+ <nav style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background-color: #3366cc;">
+  <div style="color: white; font-size: 20px;">
+      <a href="/" style="text-decoration: none; color: white; font-weight: bold; ">HOME</a> | 
+      {% comment %} <a href="{% url 'login' %}" style="text-decoration: none; color: white; font-weight: bold;">MEMBERS</a> {% endcomment %}
+      <a href="/members" style="text-decoration: none; color: white; font-weight: bold;">MEMBERS</a> 
+  </div>
+  <div style="display: flex; gap: 15px; align-items: center;">
+      {% if user.is_authenticated %}
+          <!-- Logout Link -->
+          <span style="color: white; font-weight: bold;">Welcome, {{ user.username }}</span>
+          {% comment %} <a href="{% url 'logout' %}" style="text-decoration: none; color: white; background-color: red; padding: 5px 10px; border-radius: 5px;">Logout</a> {% endcomment %}
+          <form action="{% url 'logout' %}" method="POST" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
+        
+      {% else %}
+          <!-- Login and Sign-Up Links -->
+          <a href="{% url 'login' %}" style="text-decoration: none; color: white; background-color: green; padding: 5px 10px; border-radius: 5px;">Login</a>
+          <a href="{% url 'signup' %}" style="text-decoration: none; color: white; background-color: orange; padding: 5px 10px; border-radius: 5px;">Sign Up</a>
+      {% endif %}
+  </div>
+</nav> 
+
+
+
+
+
+
+{% block content %}
+{% endblock %}
+
+
+
+</body>
+</html>
